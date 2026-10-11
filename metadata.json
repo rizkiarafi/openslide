@@ -1,0 +1,8 @@
+{
+  "name": "OpenSlide",
+  "description": "Interactive slide deck presentation builder and viewer built with React and OpenSlide.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
