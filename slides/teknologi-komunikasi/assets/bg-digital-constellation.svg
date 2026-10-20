@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <pattern id="gridLarge" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#16a34a" stroke-width="0.75" stroke-opacity="0.04" />
+    </pattern>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#gridLarge)" />
+
+  <!-- Constellation mesh center left -->
+  <g stroke="#15803d" stroke-width="1.2" stroke-opacity="0.10">
+    <line x1="160" y1="220" x2="340" y2="180" />
+    <line x1="340" y1="180" x2="480" y2="310" />
+    <line x1="480" y1="310" x2="290" y2="390" />
+    <line x1="290" y1="390" x2="160" y2="220" />
+    <line x1="340" y1="180" x2="290" y2="390" />
+    <line x1="480" y1="310" x2="620" y2="240" />
+    <line x1="620" y1="240" x2="740" y2="360" />
+    <line x1="480" y1="310" x2="740" y2="360" />
+  </g>
+
+  <g fill="#16a34a" fill-opacity="0.16">
+    <circle cx="160" cy="220" r="5" />
+    <circle cx="340" cy="180" r="6" />
+    <circle cx="480" cy="310" r="7" />
+    <circle cx="290" cy="390" r="5" />
+    <circle cx="620" cy="240" r="5.5" />
+    <circle cx="740" cy="360" r="6.5" />
+  </g>
+
+  <!-- Constellation mesh bottom right -->
+  <g stroke="#22c55e" stroke-width="1.2" stroke-opacity="0.09">
+    <line x1="1400" y1="820" x2="1580" y2="760" />
+    <line x1="1580" y1="760" x2="1760" y2="860" />
+    <line x1="1760" y1="860" x2="1620" y2="980" />
+    <line x1="1620" y1="980" x2="1400" y2="820" />
+    <line x1="1580" y1="760" x2="1620" y2="980" />
+    <line x1="1760" y1="860" x2="1860" y2="780" />
+  </g>
+
+  <g fill="#22c55e" fill-opacity="0.14">
+    <circle cx="1400" cy="820" r="5" />
+    <circle cx="1580" cy="760" r="6" />
+    <circle cx="1760" cy="860" r="7" />
+    <circle cx="1620" cy="980" r="5" />
+    <circle cx="1860" cy="780" r="4.5" />
+  </g>
+</svg>

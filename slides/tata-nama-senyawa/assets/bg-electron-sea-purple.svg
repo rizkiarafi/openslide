@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <linearGradient id="purpleGradWave" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea" stop-opacity="0.08" />
+      <stop offset="50%" stop-color="#c084fc" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.07" />
+    </linearGradient>
+    <radialGradient id="electronGlowPurple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient wave bands -->
+  <path d="M 0,900 C 400,820 800,980 1200,900 C 1600,820 1800,940 1920,890 L 1920,1080 L 0,1080 Z" fill="url(#purpleGradWave)" />
+  <path d="M 0,220 C 500,140 900,280 1400,180 C 1700,120 1850,200 1920,160" stroke="#7c3aed" stroke-opacity="0.12" stroke-width="2" fill="none" stroke-dasharray="8 8" />
+  <path d="M 0,260 C 450,180 850,320 1350,220 C 1650,160 1820,240 1920,200" stroke="#9333ea" stroke-opacity="0.10" stroke-width="1.5" fill="none" />
+
+  <!-- Delocalized electron dots and ions -->
+  <g fill="#7c3aed" fill-opacity="0.25">
+    <circle cx="250" cy="180" r="5" />
+    <circle cx="480" cy="240" r="4" />
+    <circle cx="720" cy="190" r="6" />
+    <circle cx="950" cy="250" r="5" />
+    <circle cx="1200" cy="180" r="4" />
+    <circle cx="1450" cy="220" r="6" />
+    <circle cx="1700" cy="160" r="5" />
+  </g>
+
+  <!-- Polyatomic radical ions watermark (Bottom Right) -->
+  <g transform="translate(1500, 780)" opacity="0.32">
+    <circle cx="100" cy="100" r="90" fill="url(#electronGlowPurple)" />
+    <circle cx="100" cy="100" r="60" stroke="#7c3aed" stroke-opacity="0.3" stroke-width="2" />
+    <text x="75" y="108" font-family="system-ui, sans-serif" font-weight="800" font-size="24" fill="#6d28d9">SO₄²⁻</text>
+  </g>
+  <g transform="translate(1260, 840)" opacity="0.25">
+    <circle cx="60" cy="60" r="50" stroke="#9333ea" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="4 4" />
+    <text x="40" y="68" font-family="system-ui, sans-serif" font-weight="800" font-size="20" fill="#7c3aed">NO₃⁻</text>
+  </g>
+</svg>

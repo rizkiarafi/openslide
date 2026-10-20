@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16a34a" stop-opacity="0.08" />
+      <stop offset="50%" stop-color="#22c55e" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#15803d" stop-opacity="0.06" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#16a34a" stop-opacity="0.02" />
+      <stop offset="50%" stop-color="#15803d" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.02" />
+    </linearGradient>
+    <pattern id="dotGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <circle cx="24" cy="24" r="1.5" fill="#15803d" fill-opacity="0.06" />
+    </pattern>
+  </defs>
+
+  <!-- Base soft dot grid matrix -->
+  <rect width="1920" height="1080" fill="url(#dotGrid)" />
+
+  <!-- Subtle circuit pathways top right -->
+  <g stroke="#16a34a" stroke-width="1.5" stroke-opacity="0.12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1400 0 V140 L1520 260 H1820" />
+    <path d="M1500 0 V90 L1620 210 H1920" />
+    <path d="M1680 0 V180 L1760 260 V420 L1880 540 H1920" />
+    <path d="M1320 0 V80 L1440 200 H1600 L1680 280 V480" />
+    <path d="M1780 180 H1860 L1920 240" />
+  </g>
+
+  <!-- Circuit nodes top right -->
+  <g fill="#16a34a" fill-opacity="0.18">
+    <circle cx="1520" cy="260" r="4.5" />
+    <circle cx="1820" cy="260" r="5.5" />
+    <circle cx="1620" cy="210" r="4" />
+    <circle cx="1760" cy="260" r="4" />
+    <circle cx="1880" cy="540" r="5" />
+    <circle cx="1440" cy="200" r="4.5" />
+    <circle cx="1680" cy="280" r="4" />
+  </g>
+
+  <!-- Soft circuit lines bottom left -->
+  <g stroke="#15803d" stroke-width="1.5" stroke-opacity="0.11" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 880 H280 L420 1020 V1080" />
+    <path d="M0 760 H180 L340 920 H540 L620 1000 V1080" />
+    <path d="M0 960 H140 L260 1080" />
+    <path d="M180 1080 V1000 L320 860 H480" />
+    <path d="M420 720 L300 840 H0" />
+  </g>
+
+  <!-- Circuit nodes bottom left -->
+  <g fill="#15803d" fill-opacity="0.16">
+    <circle cx="280" cy="880" r="5" />
+    <circle cx="420" cy="1020" r="4.5" />
+    <circle cx="340" cy="920" r="4" />
+    <circle cx="540" cy="920" r="5.5" />
+    <circle cx="620" cy="1000" r="4" />
+    <circle cx="320" cy="860" r="4.5" />
+  </g>
+
+  <!-- Large subtle flowing geometric communication arcs -->
+  <g stroke="url(#lineGrad)" stroke-width="2">
+    <path d="M-100 540 C 400 300, 700 750, 1100 480 C 1500 210, 1700 620, 2020 400" />
+    <path d="M-100 620 C 450 380, 750 820, 1150 560 C 1550 290, 1750 700, 2020 480" />
+  </g>
+
+  <!-- Concentric pulse rings representing wireless broadcast center right -->
+  <g stroke="#22c55e" stroke-width="1.2" stroke-opacity="0.08" fill="none">
+    <circle cx="1650" cy="780" r="90" stroke-dasharray="8 6" />
+    <circle cx="1650" cy="780" r="160" stroke-dasharray="12 8" />
+    <circle cx="1650" cy="780" r="240" stroke-dasharray="16 10" />
+    <circle cx="1650" cy="780" r="330" />
+  </g>
+</svg>

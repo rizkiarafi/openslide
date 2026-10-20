@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <radialGradient id="covGlow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="covGlow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient glowing electron overlap -->
+  <circle cx="1520" cy="360" r="320" fill="url(#covGlow1)" />
+  <circle cx="1680" cy="360" r="320" fill="url(#covGlow2)" />
+
+  <!-- Electron wave probability lines -->
+  <g stroke="#2563eb" stroke-opacity="0.08" stroke-width="1.5">
+    <ellipse cx="1600" cy="360" rx="420" ry="240" transform="rotate(-15 1600 360)" />
+    <ellipse cx="1600" cy="360" rx="340" ry="190" transform="rotate(-15 1600 360)" stroke-dasharray="8 6" />
+    <ellipse cx="1600" cy="360" rx="260" ry="140" transform="rotate(-15 1600 360)" />
+    <ellipse cx="1600" cy="360" rx="180" ry="90" transform="rotate(-15 1600 360)" stroke-opacity="0.12" />
+  </g>
+
+  <!-- Lewis shared electron pairs watermark in center of overlap -->
+  <g fill="#0284c7" fill-opacity="0.35">
+    <circle cx="1600" cy="335" r="7" />
+    <circle cx="1600" cy="385" r="7" />
+  </g>
+
+  <!-- Atom cores -->
+  <circle cx="1480" cy="360" r="22" fill="#1d4ed8" fill-opacity="0.15" stroke="#2563eb" stroke-opacity="0.25" stroke-width="2" />
+  <circle cx="1720" cy="360" r="22" fill="#0284c7" fill-opacity="0.15" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="2" />
+
+  <!-- Coordinate axis & degree markers (scientific blueprint feel) -->
+  <g stroke="#2563eb" stroke-opacity="0.1" stroke-width="1.2">
+    <line x1="1480" y1="360" x2="1720" y2="360" stroke-dasharray="4 4" />
+    <path d="M 1520,360 A 40,40 0 0,0 1500,325" fill="none" />
+  </g>
+  <text x="1515" y="318" fill="#2563eb" fill-opacity="0.22" font-family="monospace" font-size="14" font-weight="600">104.5°</text>
+
+  <!-- Corner indicators -->
+  <path d="M 60,90 L 60,60 L 90,60" stroke="#2563eb" stroke-opacity="0.2" stroke-width="2" />
+  <path d="M 1830,60 L 1860,60 L 1860,90" stroke="#2563eb" stroke-opacity="0.2" stroke-width="2" />
+  <path d="M 60,990 L 60,1020 L 90,1020" stroke="#2563eb" stroke-opacity="0.2" stroke-width="2" />
+  <path d="M 1830,1020 L 1860,1020 L 1860,990" stroke="#2563eb" stroke-opacity="0.2" stroke-width="2" />
+</svg>

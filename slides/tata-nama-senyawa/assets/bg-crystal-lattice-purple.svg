@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <radialGradient id="latticeGlowPurple" cx="82%" cy="42%" r="52%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.10" />
+      <stop offset="55%" stop-color="#c084fc" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="dotGridPurple" width="48" height="48" patternUnits="userSpaceOnUse">
+      <circle cx="24" cy="24" r="1.5" fill="#7c3aed" fill-opacity="0.08" />
+    </pattern>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#dotGridPurple)" />
+  <circle cx="1520" cy="450" r="560" fill="url(#latticeGlowPurple)" />
+
+  <!-- Isometric 3D Ionic Crystal Lattice Structure (Right side watermark) -->
+  <g transform="translate(1360, 210)" stroke="#6d28d9" stroke-opacity="0.18" stroke-width="2">
+    <!-- Layer 1 -->
+    <path d="M 0,100 L 140,20 L 280,100 L 140,180 Z" fill="rgba(124, 58, 237, 0.03)" />
+    <path d="M 140,20 L 280,-60 L 420,20 L 280,100 Z" fill="rgba(147, 51, 234, 0.03)" />
+    <!-- Layer 2 -->
+    <path d="M 0,260 L 140,180 L 280,260 L 140,340 Z" fill="rgba(124, 58, 237, 0.03)" />
+    <path d="M 140,180 L 280,100 L 420,180 L 280,260 Z" fill="rgba(147, 51, 234, 0.03)" />
+    <!-- Vertical Pillars -->
+    <line x1="0" y1="100" x2="0" y2="260" />
+    <line x1="140" y1="20" x2="140" y2="180" />
+    <line x1="280" y1="-60" x2="280" y2="100" />
+    <line x1="280" y1="100" x2="280" y2="260" />
+    <line x1="420" y1="20" x2="420" y2="180" />
+    <line x1="140" y1="180" x2="140" y2="340" />
+
+    <!-- Cation (Na+) & Anion (Cl-) Node Spheres in Purple -->
+    <!-- Cations (smaller, rich purple) -->
+    <circle cx="0" cy="100" r="10" fill="#6d28d9" fill-opacity="0.4" stroke="#7c3aed" stroke-opacity="0.5" />
+    <circle cx="280" cy="100" r="10" fill="#6d28d9" fill-opacity="0.4" stroke="#7c3aed" stroke-opacity="0.5" />
+    <circle cx="140" cy="340" r="10" fill="#6d28d9" fill-opacity="0.4" stroke="#7c3aed" stroke-opacity="0.5" />
+    <circle cx="280" cy="-60" r="10" fill="#6d28d9" fill-opacity="0.4" stroke="#7c3aed" stroke-opacity="0.5" />
+    <circle cx="420" cy="180" r="10" fill="#6d28d9" fill-opacity="0.4" stroke="#7c3aed" stroke-opacity="0.5" />
+
+    <!-- Anions (larger, soft lavender violet) -->
+    <circle cx="140" cy="20" r="18" fill="#9333ea" fill-opacity="0.28" stroke="#c084fc" stroke-opacity="0.45" />
+    <circle cx="140" cy="180" r="18" fill="#9333ea" fill-opacity="0.28" stroke="#c084fc" stroke-opacity="0.45" />
+    <circle cx="0" cy="260" r="18" fill="#9333ea" fill-opacity="0.28" stroke="#c084fc" stroke-opacity="0.45" />
+    <circle cx="280" cy="260" r="18" fill="#9333ea" fill-opacity="0.28" stroke="#c084fc" stroke-opacity="0.45" />
+    <circle cx="420" cy="20" r="18" fill="#9333ea" fill-opacity="0.28" stroke="#c084fc" stroke-opacity="0.45" />
+  </g>
+
+  <!-- Left corner subtle formula motif -->
+  <g transform="translate(80, 840)" opacity="0.35">
+    <rect x="0" y="0" width="220" height="90" rx="16" fill="rgba(124, 58, 237, 0.05)" stroke="#7c3aed" stroke-opacity="0.2" />
+    <text x="24" y="38" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#7c3aed">KATION [Mⁿ⁺]</text>
+    <text x="24" y="68" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#9333ea">ANION [Xᵐ⁻]</text>
+  </g>
+</svg>
