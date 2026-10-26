@@ -238,6 +238,22 @@ const IconAtom = ({ size = 24, color = colors.purplePrimary }: { size?: number; 
   </svg>
 );
 
+const IconUser = ({ size = 24, color = colors.purplePrimary }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
+);
+
+const IconGroup = ({ size = 24, color = colors.purplePrimary }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>
+);
+
 const IconTarget = ({ size = 24, color = colors.purplePrimary }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
@@ -293,24 +309,37 @@ const IconCalculator = ({ size = 24, color = colors.purplePrimary }: { size?: nu
 );
 
 // =========================================================================
-// SLIDE 1: Cover
+// SLIDE 1: Cover (Left Aligned)
 // =========================================================================
 const Slide1Cover: Page = () => (
   <div style={canvasStyle}>
     <SubtleBackground motif="constellation" />
 
-    <div style={centeredContainerStyle}>
+    <div
+      style={{
+        position: 'relative',
+        zIndex: 1,
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        width: '100%',
+        maxWidth: 1560,
+        margin: '0 auto',
+      }}
+    >
       <div
         style={{
           display: 'inline-flex',
           alignItems: 'center',
           gap: 10,
-          padding: '8px 24px',
+          padding: '8px 22px',
           borderRadius: 999,
           background: colors.purpleSoft,
           border: `1.5px solid ${colors.purpleSoftBorder}`,
           color: colors.purplePrimary,
-          fontSize: 18,
+          fontSize: 17,
           fontWeight: 700,
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
@@ -323,13 +352,13 @@ const Slide1Cover: Page = () => (
 
       <h1
         style={{
-          margin: '0 0 14px 0',
+          margin: '0 0 16px 0',
           fontFamily: fontSerif,
-          fontSize: 80,
+          fontSize: 84,
           fontWeight: 700,
           color: colors.purpleDark,
           letterSpacing: '-0.03em',
-          textAlign: 'center',
+          textAlign: 'left',
           lineHeight: 1.1,
         }}
       >
@@ -338,34 +367,34 @@ const Slide1Cover: Page = () => (
 
       <p
         style={{
-          maxWidth: 1100,
-          fontSize: 23,
+          maxWidth: 1260,
+          fontSize: 24,
           lineHeight: 1.5,
           color: colors.textBody,
-          textAlign: 'center',
-          margin: '0 0 32px 0',
+          textAlign: 'left',
+          margin: '0 0 34px 0',
         }}
       >
         Tata nama senyawa kimia adalah aturan yang digunakan untuk memberikan nama pada suatu senyawa berdasarkan unsur-unsur penyusunnya.
       </p>
 
-      {/* 4 Example cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24, width: '100%', maxWidth: 1300, marginBottom: 28 }}>
-        <div style={{ background: '#ffffff', border: `1.5px solid ${colors.purpleSoftBorder}`, borderRadius: 16, padding: '20px 24px', textAlign: 'center', boxShadow: colors.cardShadow }}>
+      {/* 4 Example cards (Left Aligned) */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24, width: '100%', maxWidth: 1480, marginBottom: 28 }}>
+        <div style={{ background: '#ffffff', border: `1.5px solid ${colors.purpleSoftBorder}`, borderRadius: 16, padding: '22px 26px', textAlign: 'left', boxShadow: colors.cardShadow }}>
           <div style={{ fontFamily: fontMono, fontSize: 32, fontWeight: 700, color: colors.purplePrimary, marginBottom: 6 }}>H₂O</div>
-          <div style={{ fontSize: 18, fontWeight: 600, color: colors.textDark }}>air</div>
+          <div style={{ fontSize: 19, fontWeight: 600, color: colors.textDark }}>air</div>
         </div>
-        <div style={{ background: '#ffffff', border: `1.5px solid ${colors.purpleSoftBorder}`, borderRadius: 16, padding: '20px 24px', textAlign: 'center', boxShadow: colors.cardShadow }}>
+        <div style={{ background: '#ffffff', border: `1.5px solid ${colors.purpleSoftBorder}`, borderRadius: 16, padding: '22px 26px', textAlign: 'left', boxShadow: colors.cardShadow }}>
           <div style={{ fontFamily: fontMono, fontSize: 32, fontWeight: 700, color: colors.purplePrimary, marginBottom: 6 }}>NaCl</div>
-          <div style={{ fontSize: 18, fontWeight: 600, color: colors.textDark }}>natrium klorida</div>
+          <div style={{ fontSize: 19, fontWeight: 600, color: colors.textDark }}>natrium klorida</div>
         </div>
-        <div style={{ background: '#ffffff', border: `1.5px solid ${colors.purpleSoftBorder}`, borderRadius: 16, padding: '20px 24px', textAlign: 'center', boxShadow: colors.cardShadow }}>
+        <div style={{ background: '#ffffff', border: `1.5px solid ${colors.purpleSoftBorder}`, borderRadius: 16, padding: '22px 26px', textAlign: 'left', boxShadow: colors.cardShadow }}>
           <div style={{ fontFamily: fontMono, fontSize: 32, fontWeight: 700, color: colors.purplePrimary, marginBottom: 6 }}>CO₂</div>
-          <div style={{ fontSize: 18, fontWeight: 600, color: colors.textDark }}>karbon dioksida</div>
+          <div style={{ fontSize: 19, fontWeight: 600, color: colors.textDark }}>karbon dioksida</div>
         </div>
-        <div style={{ background: '#ffffff', border: `1.5px solid ${colors.purpleSoftBorder}`, borderRadius: 16, padding: '20px 24px', textAlign: 'center', boxShadow: colors.cardShadow }}>
+        <div style={{ background: '#ffffff', border: `1.5px solid ${colors.purpleSoftBorder}`, borderRadius: 16, padding: '22px 26px', textAlign: 'left', boxShadow: colors.cardShadow }}>
           <div style={{ fontFamily: fontMono, fontSize: 32, fontWeight: 700, color: colors.purplePrimary, marginBottom: 6 }}>NH₃</div>
-          <div style={{ fontSize: 18, fontWeight: 600, color: colors.textDark }}>amonia</div>
+          <div style={{ fontSize: 19, fontWeight: 600, color: colors.textDark }}>amonia</div>
         </div>
       </div>
 
@@ -376,18 +405,19 @@ const Slide1Cover: Page = () => (
           gridTemplateColumns: '1fr 1fr',
           gap: 24,
           width: '100%',
-          maxWidth: 1300,
+          maxWidth: 1480,
         }}
       >
         <div
           style={{
             background: colors.purplePale,
             borderLeft: `5px solid ${colors.purplePrimary}`,
-            borderRadius: 12,
-            padding: '16px 24px',
+            borderRadius: 14,
+            padding: '18px 24px',
             display: 'flex',
             alignItems: 'center',
             gap: 16,
+            textAlign: 'left',
           }}
         >
           <IconBook size={28} color={colors.purplePrimary} />
@@ -400,11 +430,12 @@ const Slide1Cover: Page = () => (
           style={{
             background: colors.purplePale,
             borderLeft: `5px solid ${colors.purpleVibrant}`,
-            borderRadius: 12,
-            padding: '16px 24px',
+            borderRadius: 14,
+            padding: '18px 24px',
             display: 'flex',
             alignItems: 'center',
             gap: 16,
+            textAlign: 'left',
           }}
         >
           <IconLayers size={28} color={colors.purpleVibrant} />
@@ -420,7 +451,310 @@ const Slide1Cover: Page = () => (
 );
 
 // =========================================================================
-// SLIDE 2: Tujuan Pembelajaran
+// SLIDE 2: Anggota Kelompok
+// =========================================================================
+const SlideAnggota: Page = () => (
+  <div style={canvasStyle}>
+    <SubtleBackground motif="orbitals" />
+
+    <div style={centeredContainerStyle}>
+      {/* Title positioned directly above content */}
+      <SlideHeader tag="Tim Penyusun • Kelompok" title="Anggota Kelompok" />
+
+      <p style={{ fontSize: 20, color: colors.textDark, textAlign: 'center', marginBottom: 28, fontWeight: 600 }}>
+        Mata Kuliah Kimia Dasar • Presentasi Materi Tata Nama Senyawa Kimia
+      </p>
+
+      {/* 6 Member Cards Grid (2 rows x 3 columns) */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 22,
+          width: '100%',
+          maxWidth: 1540,
+          marginBottom: 26,
+        }}
+      >
+        <div
+          style={{
+            background: '#ffffff',
+            borderRadius: 18,
+            border: `1.5px solid ${colors.purpleSoftBorder}`,
+            boxShadow: colors.cardShadow,
+            padding: '22px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 18,
+            textAlign: 'left',
+          }}
+        >
+          <div
+            style={{
+              width: 54,
+              height: 54,
+              borderRadius: 16,
+              background: colors.purplePale,
+              border: `1px solid ${colors.purpleSoftBorder}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <IconUser size={26} color={colors.purplePrimary} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: colors.purpleDark, lineHeight: 1.3, marginBottom: 8 }}>
+              RACHMATDANI PERMANA AULIAN
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: colors.textMuted }}>NPM</span>
+              <span style={{ fontFamily: fontMono, fontSize: 16, fontWeight: 700, color: colors.purplePrimary, background: colors.purplePale, padding: '3px 10px', borderRadius: 8, border: `1px solid ${colors.purpleSoftBorder}` }}>
+                50426752
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            background: '#ffffff',
+            borderRadius: 18,
+            border: `1.5px solid ${colors.purpleSoftBorder}`,
+            boxShadow: colors.cardShadow,
+            padding: '22px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 18,
+            textAlign: 'left',
+          }}
+        >
+          <div
+            style={{
+              width: 54,
+              height: 54,
+              borderRadius: 16,
+              background: colors.purplePale,
+              border: `1px solid ${colors.purpleSoftBorder}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <IconUser size={26} color={colors.purplePrimary} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: colors.purpleDark, lineHeight: 1.3, marginBottom: 8 }}>
+              RASYA ZAHRAN MARDIANSYAH
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: colors.textMuted }}>NPM</span>
+              <span style={{ fontFamily: fontMono, fontSize: 16, fontWeight: 700, color: colors.purplePrimary, background: colors.purplePale, padding: '3px 10px', borderRadius: 8, border: `1px solid ${colors.purpleSoftBorder}` }}>
+                50426803
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            background: '#ffffff',
+            borderRadius: 18,
+            border: `1.5px solid ${colors.purpleSoftBorder}`,
+            boxShadow: colors.cardShadow,
+            padding: '22px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 18,
+            textAlign: 'left',
+          }}
+        >
+          <div
+            style={{
+              width: 54,
+              height: 54,
+              borderRadius: 16,
+              background: colors.purplePale,
+              border: `1px solid ${colors.purpleSoftBorder}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <IconUser size={26} color={colors.purplePrimary} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: colors.purpleDark, lineHeight: 1.3, marginBottom: 8 }}>
+              RIZKI ARAFI ZAIDAN
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: colors.textMuted }}>NPM</span>
+              <span style={{ fontFamily: fontMono, fontSize: 16, fontWeight: 700, color: colors.purplePrimary, background: colors.purplePale, padding: '3px 10px', borderRadius: 8, border: `1px solid ${colors.purpleSoftBorder}` }}>
+                50426848
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            background: '#ffffff',
+            borderRadius: 18,
+            border: `1.5px solid ${colors.purpleSoftBorder}`,
+            boxShadow: colors.cardShadow,
+            padding: '22px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 18,
+            textAlign: 'left',
+          }}
+        >
+          <div
+            style={{
+              width: 54,
+              height: 54,
+              borderRadius: 16,
+              background: colors.purplePale,
+              border: `1px solid ${colors.purpleSoftBorder}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <IconUser size={26} color={colors.purplePrimary} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: colors.purpleDark, lineHeight: 1.3, marginBottom: 8 }}>
+              RIZKIANI YUNINGSI LOUNYANYI
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: colors.textMuted }}>NPM</span>
+              <span style={{ fontFamily: fontMono, fontSize: 16, fontWeight: 700, color: colors.purplePrimary, background: colors.purplePale, padding: '3px 10px', borderRadius: 8, border: `1px solid ${colors.purpleSoftBorder}` }}>
+                50426850
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            background: '#ffffff',
+            borderRadius: 18,
+            border: `1.5px solid ${colors.purpleSoftBorder}`,
+            boxShadow: colors.cardShadow,
+            padding: '22px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 18,
+            textAlign: 'left',
+          }}
+        >
+          <div
+            style={{
+              width: 54,
+              height: 54,
+              borderRadius: 16,
+              background: colors.purplePale,
+              border: `1px solid ${colors.purpleSoftBorder}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <IconUser size={26} color={colors.purplePrimary} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: colors.purpleDark, lineHeight: 1.3, marginBottom: 8 }}>
+              SHARMAN RADHITYA BILAL
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: colors.textMuted }}>NPM</span>
+              <span style={{ fontFamily: fontMono, fontSize: 16, fontWeight: 700, color: colors.purplePrimary, background: colors.purplePale, padding: '3px 10px', borderRadius: 8, border: `1px solid ${colors.purpleSoftBorder}` }}>
+                50426900
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            background: '#ffffff',
+            borderRadius: 18,
+            border: `1.5px solid ${colors.purpleSoftBorder}`,
+            boxShadow: colors.cardShadow,
+            padding: '22px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 18,
+            textAlign: 'left',
+          }}
+        >
+          <div
+            style={{
+              width: 54,
+              height: 54,
+              borderRadius: 16,
+              background: colors.purplePale,
+              border: `1px solid ${colors.purpleSoftBorder}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <IconUser size={26} color={colors.purplePrimary} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: colors.purpleDark, lineHeight: 1.3, marginBottom: 8 }}>
+              WAHYU RAKHA SAPUTRA
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: colors.textMuted }}>NPM</span>
+              <span style={{ fontFamily: fontMono, fontSize: 16, fontWeight: 700, color: colors.purplePrimary, background: colors.purplePale, padding: '3px 10px', borderRadius: 8, border: `1px solid ${colors.purpleSoftBorder}` }}>
+                50426943
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Group Info Banner */}
+      <div
+        style={{
+          width: '100%',
+          maxWidth: 1540,
+          background: colors.purplePale,
+          borderLeft: `5px solid ${colors.purplePrimary}`,
+          borderRadius: 14,
+          padding: '16px 26px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <IconGroup size={26} color={colors.purplePrimary} />
+          <div style={{ fontSize: 16, color: colors.textDark, fontWeight: 600 }}>
+            Kelompok Presentasi Mahasiswa • Program Studi Teknik Informatika
+          </div>
+        </div>
+        <div style={{ fontSize: 15, color: colors.purpleDark, fontWeight: 700, letterSpacing: '0.02em' }}>
+          6 Anggota Terdaftar
+        </div>
+      </div>
+    </div>
+
+    <SlideFooter />
+  </div>
+);
+
+// =========================================================================
+// SLIDE 3: Tujuan Pembelajaran
 // =========================================================================
 const Slide2Tujuan: Page = () => (
   <div style={canvasStyle}>
@@ -1652,20 +1986,21 @@ const Slide15Kesimpulan: Page = () => (
 // =========================================================================
 export const notes: (string | undefined)[] = [
   'Slide 1: Pengantar tata nama senyawa kimia. Jelaskan pengertian tata nama senyawa sebagai aturan penamaan berdasarkan unsur penyusunnya, serta berikan contoh umum seperti H2O, NaCl, CO2, dan NH3.',
-  'Slide 2: Uraikan lima tujuan pembelajaran yang diharapkan dikuasai mahasiswa, dengan fokus utama mampu menyebutkan nama senyawa secara tepat dari rumus kimianya.',
-  'Slide 3: Jelaskan definisi bilangan oksidasi sebagai muatan formal atom. Diskusikan contoh NaCl mengenai serah-terima elektron, dan ingatkan bahwa biloks berbeda dari muatan nyata pada senyawa kovalen.',
-  'Slide 4: Bahas 7 aturan dasar penentuan biloks: unsur bebas, ion monoatomik, golongan IA, IIA, fluorin, oksigen beserta perkecualiannya, dan hidrogen.',
-  'Slide 5: Terangkan aturan total biloks: senyawa netral bernilai 0 dan ion poliatomik bernilai sama dengan muatan ionnya. Tunjukkan contoh perhitungan H2O dan SO4(2-).',
-  'Slide 6: Berikan panduan langkah sistematis menyelesaikan persamaan matematika penentuan biloks. Ajak audiens meninjau penentuan biloks sulfur dalam H2SO4 step-by-step.',
-  'Slide 7: Masuk ke materi tata nama senyawa. Paparkan empat kategori utama: senyawa ion, senyawa kovalen, asam, dan basa beserta karakteristik dan contoh masing-masing.',
-  'Slide 8: Jelaskan aturan penamaan senyawa ion, kation lalu anion dengan akhiran -ida pada nonlogam. Tunjukkan tabel contoh NaCl, KBr, MgO, CaS, dan Al2O3.',
-  'Slide 9: Terangkan penamaan logam dengan biloks bervariasi menggunakan angka Romawi. Bedakan besi(II) dan besi(III) klorida, serta jelaskan cara perhitungannya.',
-  'Slide 10: Ulas penamaan senyawa kovalen biner dengan awalan Yunani dari mono- hingga deka-. Ingatkan aturan pengecualian awalan mono pada unsur pertama.',
-  'Slide 11: Bahas penamaan asam dengan awalan asam dan basa dengan akhiran hidroksida. Berikan catatan khusus perbedaan fase aqueous dan gas pada HCl.',
-  'Slide 12: Kenalkan ion-ion poliatomik penting dan aturan penamaan senyawa yang mengikatnya. Tekankan perbedaan akhiran -at dan -it pada nitrat/nitrit serta sulfat/sulfit.',
-  'Slide 13: Berikan 5 langkah praktis saat membaca rumus kimia yang belum dikenal, dengan contoh studi kasus Fe2O3 hingga menghasilkan nama besi(III) oksida.',
-  'Slide 14: Latihan soal interaktif membahas Na2O, SO3, CuCl2, dan Ca(NO3)2 secara mendalam.',
-  'Slide 15: Rangkum 6 poin inti yang telah dipelajari sebagai penutup materi perkuliahan hari ini.',
+  'Slide 2: Perkenalan tim penyusun dan anggota kelompok mahasiswa yang mempresentasikan materi Tata Nama Senyawa Kimia.',
+  'Slide 3: Uraikan lima tujuan pembelajaran yang diharapkan dikuasai mahasiswa, dengan fokus utama mampu menyebutkan nama senyawa secara tepat dari rumus kimianya.',
+  'Slide 4: Jelaskan definisi bilangan oksidasi sebagai muatan formal atom. Diskusikan contoh NaCl mengenai serah-terima elektron, dan ingatkan bahwa biloks berbeda dari muatan nyata pada senyawa kovalen.',
+  'Slide 5: Bahas 7 aturan dasar penentuan biloks: unsur bebas, ion monoatomik, golongan IA, IIA, fluorin, oksigen beserta perkecualiannya, dan hidrogen.',
+  'Slide 6: Terangkan aturan total biloks: senyawa netral bernilai 0 dan ion poliatomik bernilai sama dengan muatan ionnya. Tunjukkan contoh perhitungan H2O dan SO4(2-).',
+  'Slide 7: Berikan panduan langkah sistematis menyelesaikan persamaan matematika penentuan biloks. Ajak audiens meninjau penentuan biloks sulfur dalam H2SO4 step-by-step.',
+  'Slide 8: Masuk ke materi tata nama senyawa. Paparkan empat kategori utama: senyawa ion, senyawa kovalen, asam, dan basa beserta karakteristik dan contoh masing-masing.',
+  'Slide 9: Jelaskan aturan penamaan senyawa ion, kation lalu anion dengan akhiran -ida pada nonlogam. Tunjukkan tabel contoh NaCl, KBr, MgO, CaS, dan Al2O3.',
+  'Slide 10: Terangkan penamaan logam dengan biloks bervariasi menggunakan angka Romawi. Bedakan besi(II) dan besi(III) klorida, serta jelaskan cara perhitungannya.',
+  'Slide 11: Ulas penamaan senyawa kovalen biner dengan awalan Yunani dari mono- hingga deka-. Ingatkan aturan pengecualian awalan mono pada unsur pertama.',
+  'Slide 12: Bahas penamaan asam dengan awalan asam dan basa dengan akhiran hidroksida. Berikan catatan khusus perbedaan fase aqueous dan gas pada HCl.',
+  'Slide 13: Kenalkan ion-ion poliatomik penting dan aturan penamaan senyawa yang mengikatnya. Tekankan perbedaan akhiran -at dan -it pada nitrat/nitrit serta sulfat/sulfit.',
+  'Slide 14: Berikan 5 langkah praktis saat membaca rumus kimia yang belum dikenal, dengan contoh studi kasus Fe2O3 hingga menghasilkan nama besi(III) oksida.',
+  'Slide 15: Latihan soal interaktif membahas Na2O, SO3, CuCl2, dan Ca(NO3)2 secara mendalam.',
+  'Slide 16: Rangkum 6 poin inti yang telah dipelajari sebagai penutup materi perkuliahan hari ini.',
 ];
 
 // =========================================================================
@@ -1677,10 +2012,11 @@ export const meta: SlideMeta = {
 };
 
 // =========================================================================
-// EXPORT DEFAULT (Array of 15 Pages)
+// EXPORT DEFAULT (Array of 16 Pages)
 // =========================================================================
 export default [
   Slide1Cover,
+  SlideAnggota,
   Slide2Tujuan,
   Slide3BiloksDef,
   Slide4AturanDasar,
