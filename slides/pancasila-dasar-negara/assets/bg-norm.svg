@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <pattern id="lines" width="1920" height="72" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="71" x2="1920" y2="71" stroke="#7c2d12" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#lines)"/>
+  <g stroke="#a16207" stroke-opacity="0.09" stroke-width="3" fill="none">
+    <path d="M1520 180 L1700 120 L1880 180"/>
+    <line x1="1700" y1="120" x2="1700" y2="360"/>
+    <path d="M1560 360 h280 v200 h-280 z"/>
+    <path d="M1590 600 h220 v180 h-220 z"/>
+    <path d="M1620 820 h160 v160 h-160 z"/>
+  </g>
+  <circle cx="140" cy="940" r="180" stroke="#b91c1c" stroke-opacity="0.05" stroke-width="2"/>
+</svg>

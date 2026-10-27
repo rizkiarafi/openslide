@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <pattern id="cross" width="90" height="90" patternUnits="userSpaceOnUse">
+      <path d="M45 35 v20 M35 45 h20" stroke="#7c2d12" stroke-opacity="0.05" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#cross)"/>
+  <g stroke="#b91c1c" stroke-opacity="0.06" stroke-width="4" fill="none">
+    <path d="M1560 760 l160 -260 160 260 z"/>
+    <line x1="1720" y1="580" x2="1720" y2="680"/>
+    <circle cx="1720" cy="710" r="8" fill="#b91c1c" fill-opacity="0.06" stroke="none"/>
+  </g>
+  <circle cx="160" cy="920" r="220" stroke="#a16207" stroke-opacity="0.05" stroke-width="2"/>
+</svg>
