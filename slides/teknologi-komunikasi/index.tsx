@@ -74,28 +74,53 @@ const colors = {
   roseText: '#b91c1c',
 };
 
-// Smooth crossfade slide transition with throughBackground to eliminate ghosting
+// ---------------------------------------------------------------------------
+// HOUSE TRANSITION FAMILY — one DNA (hold outgoing page, fade incoming in on
+// top), three members: RISE (module default) · SETTLE (cover) · DISSOLVE
+// (closing page). No `throughBackground`, no exit fades, no enter delays —
+// the previous dip-through-background made every cut flash dark. See
+// .claude/skills/slide-authoring/references/transitions.md for the contract.
+// ---------------------------------------------------------------------------
 const EASE_OUT = 'cubic-bezier(0, 0, 0.2, 1)';
 const EASE_IN = 'cubic-bezier(0.4, 0, 1, 1)';
+const HOLD = [{ opacity: 1 }, { opacity: 1 }];
 
+/** RISE — house transition: quiet 6 px Y-rise + fade. Module default. */
 export const transition: SlideTransition = {
-  duration: 240,
-  throughBackground: true,
-  exit: {
-    duration: 180,
-    easing: EASE_IN,
-    keyframes: [
-      { opacity: 1, transform: 'scale(1)' },
-      { opacity: 0, transform: 'scale(0.99)' },
-    ],
-  },
+  duration: 260,
+  exit: { duration: 260, easing: EASE_IN, keyframes: HOLD },
   enter: {
-    duration: 240,
+    duration: 260,
     easing: EASE_OUT,
     keyframes: [
       { opacity: 0, transform: 'translateY(6px)' },
       { opacity: 1, transform: 'translateY(0)' },
     ],
+  },
+};
+
+/** SETTLE — cover page: rise + a hair of blur on enter only. */
+const settle: SlideTransition = {
+  duration: 280,
+  exit: { duration: 280, easing: EASE_IN, keyframes: HOLD },
+  enter: {
+    duration: 280,
+    easing: EASE_OUT,
+    keyframes: [
+      { opacity: 0, transform: 'translateY(12px)', filter: 'blur(4px)' },
+      { opacity: 1, transform: 'translateY(0)', filter: 'blur(0)' },
+    ],
+  },
+};
+
+/** DISSOLVE — pure opacity, reserved for the closing page. */
+const dissolve: SlideTransition = {
+  duration: 240,
+  exit: { duration: 240, easing: EASE_IN, keyframes: HOLD },
+  enter: {
+    duration: 240,
+    easing: EASE_OUT,
+    keyframes: [{ opacity: 0 }, { opacity: 1 }],
   },
 };
 
@@ -2677,6 +2702,11 @@ const Slide15Kesimpulan: Page = () => (
     <SlideFooter chapter="Penutup &amp; Refleksi" />
   </div>
 );
+
+// Per-page transition overrides: the cover materializes with SETTLE and the
+// closing page fades out/in with DISSOLVE; slides 2–14 inherit RISE.
+(Slide01Cover as { transition?: SlideTransition }).transition = settle;
+(Slide15Kesimpulan as { transition?: SlideTransition }).transition = dissolve;
 
 // Metadata OpenSlide
 export const meta: SlideMeta = {
