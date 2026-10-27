@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <pattern id="leafGrid" width="64" height="64" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <path d="M 32 12 Q 44 24 32 44 Q 20 24 32 12 Z" fill="#166534" fill-opacity="0.035"/>
+    </pattern>
+    <radialGradient id="canopyGlow" cx="82%" cy="55%" r="55%">
+      <stop offset="0%" stop-color="#15803d" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#leafGrid)"/>
+  <circle cx="1580" cy="560" r="520" fill="url(#canopyGlow)"/>
+  <!-- Banyan tree (pohon beringin) watermark -->
+  <g stroke="#14532d" stroke-opacity="0.09" stroke-width="3" fill="none">
+    <ellipse cx="1560" cy="380" rx="260" ry="140"/>
+    <ellipse cx="1420" cy="460" rx="150" ry="90"/>
+    <ellipse cx="1700" cy="460" rx="150" ry="90"/>
+    <line x1="1560" y1="520" x2="1560" y2="820"/>
+    <line x1="1450" y1="540" x2="1450" y2="760"/>
+    <line x1="1670" y1="540" x2="1670" y2="760"/>
+    <line x1="1380" y1="540" x2="1380" y2="700"/>
+    <line x1="1740" y1="540" x2="1740" y2="700"/>
+    <path d="M 1480 820 Q 1560 780 1640 820"/>
+  </g>
+  <path d="M 60 90 L 60 60 L 90 60" stroke="#14532d" stroke-opacity="0.12" stroke-width="2"/>
+  <path d="M 1830 60 L 1860 60 L 1860 90" stroke="#14532d" stroke-opacity="0.12" stroke-width="2"/>
+  <path d="M 60 990 L 60 1020 L 90 1020" stroke="#14532d" stroke-opacity="0.12" stroke-width="2"/>
+  <path d="M 1830 1020 L 1860 1020 L 1860 990" stroke="#14532d" stroke-opacity="0.12" stroke-width="2"/>
+</svg>
