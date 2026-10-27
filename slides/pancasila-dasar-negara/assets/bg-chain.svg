@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <pattern id="chainGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <circle cx="40" cy="40" r="16" stroke="#7c2d12" stroke-opacity="0.05" stroke-width="2" fill="none"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#chainGrid)"/>
+  <g fill="none" stroke="#a16207" stroke-opacity="0.08" stroke-width="4">
+    <ellipse cx="1600" cy="820" rx="110" ry="60"/>
+    <ellipse cx="1700" cy="880" rx="110" ry="60"/>
+    <ellipse cx="1600" cy="940" rx="110" ry="60"/>
+  </g>
+  <circle cx="200" cy="160" r="140" stroke="#b91c1c" stroke-opacity="0.05" stroke-width="2"/>
+</svg>

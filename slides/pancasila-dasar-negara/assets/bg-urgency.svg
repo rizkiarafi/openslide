@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <pattern id="wave" width="120" height="60" patternUnits="userSpaceOnUse">
+      <path d="M0 40 Q 30 20 60 40 T 120 40" stroke="#7c2d12" stroke-opacity="0.05" stroke-width="2" fill="none"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#wave)"/>
+  <g fill="none" stroke="#a16207" stroke-opacity="0.08" stroke-width="3">
+    <path d="M1560 200 h280 v320 h-280 z"/>
+    <line x1="1560" y1="280" x2="1840" y2="280"/>
+    <line x1="1560" y1="360" x2="1840" y2="360"/>
+    <line x1="1560" y1="440" x2="1840" y2="440"/>
+  </g>
+  <polygon points="240,820 252,858 292,858 260,882 272,920 240,896 208,920 220,882 188,858 228,858" fill="#b91c1c" fill-opacity="0.06"/>
+</svg>

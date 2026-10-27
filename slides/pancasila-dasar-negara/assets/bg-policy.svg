@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <pattern id="pgrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="60" height="60" stroke="#7c2d12" stroke-opacity="0.04" stroke-width="1" fill="none"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#pgrid)"/>
+  <g fill="none" stroke="#a16207" stroke-opacity="0.08" stroke-width="3">
+    <rect x="1500" y="700" width="120" height="220"/>
+    <rect x="1650" y="600" width="120" height="320"/>
+    <rect x="1800" y="500" width="120" height="420"/>
+  </g>
+  <polygon points="220,200 232,238 272,238 240,262 252,300 220,276 188,300 200,262 168,238 208,238" fill="#b91c1c" fill-opacity="0.06"/>
+</svg>

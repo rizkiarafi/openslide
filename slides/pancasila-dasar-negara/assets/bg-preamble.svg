@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <pattern id="page" width="240" height="300" patternUnits="userSpaceOnUse">
+      <rect x="20" y="20" width="200" height="260" rx="6" stroke="#7c2d12" stroke-opacity="0.045" stroke-width="2" fill="none"/>
+      <line x1="45" y1="70" x2="195" y2="70" stroke="#7c2d12" stroke-opacity="0.04" stroke-width="2"/>
+      <line x1="45" y1="110" x2="195" y2="110" stroke="#7c2d12" stroke-opacity="0.04" stroke-width="2"/>
+      <line x1="45" y1="150" x2="195" y2="150" stroke="#7c2d12" stroke-opacity="0.04" stroke-width="2"/>
+      <line x1="45" y1="190" x2="160" y2="190" stroke="#7c2d12" stroke-opacity="0.04" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#page)"/>
+  <polygon points="1720,180 1734,222 1778,222 1742,248 1756,290 1720,264 1684,290 1698,248 1662,222 1706,222" fill="#a16207" fill-opacity="0.07"/>
+</svg>
