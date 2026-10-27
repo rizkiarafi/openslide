@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" fill="none">
+  <defs>
+    <pattern id="padiDots" width="52" height="52" patternUnits="userSpaceOnUse">
+      <path d="M 26 16 Q 32 26 26 36 Q 20 26 26 16 Z" fill="#a16207" fill-opacity="0.045"/>
+    </pattern>
+    <radialGradient id="padiGlow" cx="18%" cy="70%" r="60%">
+      <stop offset="0%" stop-color="#ca8a04" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#padiDots)"/>
+  <rect width="1920" height="1080" fill="url(#padiGlow)"/>
+  <!-- Rice stalk (padi) watermark -->
+  <g stroke="#a16207" stroke-opacity="0.09" stroke-width="3" fill="none">
+    <path d="M 240 900 Q 260 700 340 560"/>
+    <path d="M 340 560 Q 300 570 280 610 M 340 560 Q 360 520 350 480 M 340 560 Q 380 570 400 610 M 320 630 Q 280 650 270 690 M 320 630 Q 360 640 380 680 M 300 710 Q 260 730 255 770 M 300 710 Q 340 720 355 760"/>
+  </g>
+  <path d="M 60 90 L 60 60 L 90 60" stroke="#92400e" stroke-opacity="0.13" stroke-width="2"/>
+  <path d="M 1830 60 L 1860 60 L 1860 90" stroke="#92400e" stroke-opacity="0.13" stroke-width="2"/>
+  <path d="M 60 990 L 60 1020 L 90 1020" stroke="#92400e" stroke-opacity="0.13" stroke-width="2"/>
+  <path d="M 1830 1020 L 1860 1020 L 1860 990" stroke="#92400e" stroke-opacity="0.13" stroke-width="2"/>
+</svg>
