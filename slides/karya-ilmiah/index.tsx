@@ -452,7 +452,152 @@ const Struktur: Page = () => (
   </div>
 );
 
-// ================= PAGE 5 — PENUTUP =================
+// ================= PAGE 5 — JENIS & KONDISI KEILMUAN =================
+
+const JenisKaryaIlmiah: Page = () => (
+  <div style={{ ...canvasStyle, position: 'relative' }}>
+    <Eyebrow>Taxonomi</Eyebrow>
+    <PageTitle>Jenis Karya Ilmiah dan Kondisi Keilmuan</PageTitle>
+    <p style={{ fontSize: 26, lineHeight: 1.5, color: colors.muted, margin: '18px 0 0', maxWidth: 1300 }}>
+      Setiap jenis karya ilmiah menempati satu titik pada spektrum keilmuan — dari yang murni mencari{' '}
+      <span style={{ color: colors.goldDark, fontWeight: 600 }}>kebenaran teoritis</span> hingga yang berorientasi{' '}
+      <span style={{ color: colors.goldDark, fontWeight: 600 }}>pemecahan masalah praktis</span>.
+    </p>
+
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 28, marginTop: 44 }}>
+      {[
+        [
+          'Makalah',
+          'Kajian singkat suatu masalah',
+          'Kondisi keilmuan: membahas isu terbatas dengan argumen logis berbasis pustaka.',
+          'Struktur: pendahuluan – pembahasan – penutup; biasanya tanpa metodologi penelitian.',
+        ],
+        [
+          'Skripsi',
+          'Karya ilmiah jenjang S-1',
+          'Kondisi keilmuan: menerapkan metode penelitian yang sudah mapan pada suatu kasus.',
+          'Struktur lengkap lima bab: pendahuluan, teori & metode, hasil, pembahasan, penutup.',
+        ],
+        [
+          'Tesis',
+          'Karya ilmiah jenjang S-2',
+          'Kondisi keilmuan: menguji, mengembangkan, atau menganalisis lebih dalam suatu teori.',
+          'Mensyaratkan kontribusi analisis yang lebih tajam dan metodologi yang lebih rigor.',
+        ],
+        [
+          'Disertasi',
+          'Karya ilmiah jenjang S-3',
+          'Kondisi keilmuan: menemukan pengetahuan/teori baru yang orisinal dan dapat diuji.',
+          'Kebaruan (novelty) menjadi syarat utama; dipertahankan di hadapan tim penguji.',
+        ],
+      ].map(([t, sub, kondisi, struktur], i) => (
+        <div
+          key={t}
+          style={{
+            background: colors.cardBg,
+            border: `1px solid ${colors.cardBorder}`,
+            borderRadius: 'var(--osd-radius)',
+            boxShadow: colors.cardShadow,
+            padding: '28px 28px',
+            display: 'flex',
+            flexDirection: 'column',
+            borderTop: `4px solid ${colors.goldBright}`,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: fontMono,
+              fontSize: 18,
+              letterSpacing: '0.18em',
+              color: colors.dim,
+              textTransform: 'uppercase',
+            }}
+          >
+            {String(i + 1).padStart(2, '0')} / Tingkat kompleksitas
+          </div>
+          <div style={{ fontFamily: fontSerif, fontSize: 38, fontWeight: 700, color: colors.ink, marginTop: 10 }}>{t}</div>
+          <div style={{ fontFamily: fontSerif, fontStyle: 'italic', fontSize: 23, color: colors.goldDark, marginTop: 4 }}>
+            {sub}
+          </div>
+          <div style={{ fontSize: 21, lineHeight: 1.45, color: colors.muted, marginTop: 16 }}>{kondisi}</div>
+          <div
+            style={{
+              marginTop: 'auto',
+              paddingTop: 16,
+              borderTop: `1px dashed ${colors.goldBorder}`,
+              fontSize: 20,
+              lineHeight: 1.45,
+              color: colors.dim,
+            }}
+          >
+            {struktur}
+          </div>
+        </div>
+      ))}
+    </div>
+    <Footer />
+  </div>
+);
+
+// ================= PAGE 6 — KETENTUAN/KETENTUAN PENULISAN =================
+
+const KetentuanPenulisan: Page = () => (
+  <div style={{ ...canvasStyle, position: 'relative' }}>
+    <Eyebrow>Kaidah Penulisan</Eyebrow>
+    <PageTitle>Ketentuan dan Syarat Karya Ilmiah</PageTitle>
+
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px 32px', marginTop: 48 }}>
+      {[
+        ['Berpijak pada fakta', 'Setiap pernyataan didukung data, bukti, atau rujukan yang dapat ditelusuri — bukan asumsi pribadi.'],
+        ['Bahasa baku dan lugas', 'Memakai ejaan resmi (EYD), kalimat efektif, istilah ilmiah, serta bebas dari makna kiasan.'],
+        ['Bersifat impersonal', 'Menghindari sudut pandang orang pertama; penulis melebur ke dalam objek yang dikaji.'],
+        ['Konsisten dan koheren', 'Istilah, format sitasi, dan alur antarbagian konsisten dari judul sampai daftar pustaka.'],
+        ['Sitasi dan anti-plagiasi', 'Gagasan orang lain wajib diakui lewat kutipan langsung/tidak langsung dan daftar pustaka.'],
+        ['Dapat direplikasi', 'Metode ditulis cukup rinci sehingga peneliti lain dapat mengulang kajian dan menguji hasilnya.'],
+      ].map(([t, d], i) => (
+        <div
+          key={t}
+          style={{
+            display: 'flex',
+            gap: 24,
+            alignItems: 'flex-start',
+            background: colors.cardBg,
+            border: `1px solid ${colors.cardBorder}`,
+            borderRadius: 'var(--osd-radius)',
+            boxShadow: colors.cardShadow,
+            padding: '26px 30px',
+          }}
+        >
+          <div
+            style={{
+              fontFamily: fontMono,
+              fontSize: 24,
+              fontWeight: 700,
+              color: colors.goldDark,
+              background: colors.goldSoft,
+              borderRadius: 12,
+              width: 52,
+              height: 52,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            {String(i + 1).padStart(2, '0')}
+          </div>
+          <div>
+            <div style={{ fontFamily: fontSerif, fontSize: 32, fontWeight: 700, color: colors.ink }}>{t}</div>
+            <div style={{ fontSize: 24, lineHeight: 1.5, color: colors.muted, marginTop: 6 }}>{d}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <Footer />
+  </div>
+);
+
+// ================= PAGE 7 — PENUTUP =================
 
 const Penutup: Page = () => (
   <div
@@ -479,9 +624,37 @@ const Penutup: Page = () => (
       Ilmiah berarti <span style={{ color: colors.goldDark }}>terukur</span>:<br />
       struktur yang sistematis, isi yang objektif.
     </h2>
+
+    <div style={{ marginTop: 48, display: 'flex', gap: 18, justifyContent: 'center', flexWrap: 'wrap' }}>
+      {[
+        ['Definisi', 'Berlandaskan kaidah keilmuan'],
+        ['Ciri-ciri', 'Logis, objektif, sistematis'],
+        ['Struktur', 'Judul hingga daftar pustaka'],
+        ['Jenis', 'Makalah → skripsi → tesis → disertasi'],
+        ['Ketentuan', 'Fakta, bahasa baku, sitasi'],
+      ].map(([t, d]) => (
+        <div
+          key={t}
+          style={{
+            background: colors.cardBg,
+            border: `1px solid ${colors.cardBorder}`,
+            borderRadius: 999,
+            boxShadow: colors.cardShadow,
+            padding: '16px 30px',
+            display: 'flex',
+            alignItems: 'baseline',
+            gap: 12,
+          }}
+        >
+          <span style={{ fontFamily: fontSerif, fontSize: 27, fontWeight: 700, color: colors.goldDeep }}>{t}</span>
+          <span style={{ fontSize: 20, color: colors.muted }}>{d}</span>
+        </div>
+      ))}
+    </div>
+
     <div
       style={{
-        marginTop: 56,
+        marginTop: 44,
         display: 'flex',
         gap: 20,
         alignItems: 'center',
@@ -497,7 +670,25 @@ const Penutup: Page = () => (
       <span style={{ fontFamily: fontMono, fontSize: 24, fontWeight: 600, color: colors.goldDeep }}>CIRI-CIRI</span>
       <span style={{ width: 8, height: 8, borderRadius: '50%', background: colors.goldBright }} />
       <span style={{ fontFamily: fontMono, fontSize: 24, fontWeight: 600, color: colors.goldDeep }}>STRUKTUR</span>
+      <span style={{ width: 8, height: 8, borderRadius: '50%', background: colors.goldBright }} />
+      <span style={{ fontFamily: fontMono, fontSize: 24, fontWeight: 600, color: colors.goldDeep }}>JENIS</span>
+      <span style={{ width: 8, height: 8, borderRadius: '50%', background: colors.goldBright }} />
+      <span style={{ fontFamily: fontMono, fontSize: 24, fontWeight: 600, color: colors.goldDeep }}>KETENTUAN</span>
     </div>
+
+    <p
+      style={{
+        marginTop: 40,
+        fontFamily: fontSerif,
+        fontStyle: 'italic',
+        fontSize: 30,
+        color: colors.muted,
+        maxWidth: 1100,
+        lineHeight: 1.5,
+      }}
+    >
+      Terima kasih — saatnya mempraktikkan: bedah satu contoh karya ilmiah dan kenali seluruh bagiannya.
+    </p>
     <Footer />
   </div>
 );
@@ -514,7 +705,9 @@ export const notes: (string | undefined)[] = [
   'Bayakan definisi KBBI, tekankan tiga kata kunci: kaidah keilmuan, sistematis, dapat dipertanggungjawabkan. Hubungkan dengan tiga kartu di bawahnya.',
   'Jelaskan enam ciri satu per satu; beri contoh kontras — misalnya opini di media sosial (tidak lugas, tidak dapat diuji) versus artikel jurnal.',
   'Telusuri tujuh bagian struktur dari judul sampai daftar pustaka. Tekankan bahwa "Pembahasan" adalah inti karya — bagian paling tebal pada setiap skripsi atau makalah.',
-  'Tutup dengan merangkum alur: definisi → ciri-ciri → struktur. Ajak peserta memeriksa sebuah contoh karya ilmiah dan mengidentifikasi ketujuh bagiannya.',
+  'Luruskan pemahaman jenis karya ilmiah: makalah → skripsi → tesis → disertasi, ordered by kedalaman kondisi keilmuannya — dari kajian isu terbatas hingga penemuan teori baru yang orisinal.',
+  'Bahasan kaidah penulisan: fakta, bahasa baku, impersonal, konsistensi, sitasi/anti-plagiasi, dan replikabilitas. Kaitkan dengan pengalaman peserta saat menulis tugas.',
+  'Tutup dengan merangkum alur: definisi → ciri-ciri → struktur → jenis → ketentuan. Ajak peserta memeriksa sebuah contoh karya ilmiah dan mengidentifikasi seluruh bagiannya.',
 ];
 
-export default [Cover, Definisi, CiriCiri, Struktur, Penutup] satisfies Page[];
+export default [Cover, Definisi, CiriCiri, Struktur, JenisKaryaIlmiah, KetentuanPenulisan, Penutup] satisfies Page[];
