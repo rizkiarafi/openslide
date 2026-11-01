@@ -7,10 +7,6 @@ import {
 } from '@open-slide/core';
 import type { CSSProperties, ReactNode } from 'react';
 
-// Subtle background SVG assets
-import bgNetwork from './assets/bg-digital-network.svg';
-import bgConstellation from './assets/bg-digital-constellation.svg';
-
 // Web font injection: Plus Jakarta Sans for clean modern typography & JetBrains Mono for technical codes
 const FONT_HREF =
   'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap';
@@ -75,52 +71,36 @@ const colors = {
 };
 
 // ---------------------------------------------------------------------------
-// HOUSE TRANSITION FAMILY — one DNA (hold outgoing page, fade incoming in on
-// top), three members: RISE (module default) · SETTLE (cover) · DISSOLVE
-// (closing page). No `throughBackground`, no exit fades, no enter delays —
-// the previous dip-through-background made every cut flash dark. See
-// .claude/skills/slide-authoring/references/transitions.md for the contract.
+// ONE TRANSITION FOR EVERY PAGE — FADE THROUGH WHITE.
+// Every page here is text-dense, so a cross-fade (old and new page visible
+// at once) shows overlapping, ghosted text and a dotted background that
+// doubles up. Instead the old page fades out completely first, then the new
+// page fades in with a small rise. Every page background is white-based and
+// matches `--osd-bg`, so dipping through the container colour is seamless.
+// No per-page overrides: every cut in the deck behaves identically.
 // ---------------------------------------------------------------------------
 const EASE_OUT = 'cubic-bezier(0, 0, 0.2, 1)';
 const EASE_IN = 'cubic-bezier(0.4, 0, 1, 1)';
-const HOLD = [{ opacity: 1 }, { opacity: 1 }];
 
-/** RISE — house transition: quiet 6 px Y-rise + fade. Module default. */
+const EXIT_MS = 150;
+const ENTER_MS = 230;
+
 export const transition: SlideTransition = {
-  duration: 260,
-  exit: { duration: 260, easing: EASE_IN, keyframes: HOLD },
+  duration: EXIT_MS + ENTER_MS,
+  throughBackground: true,
+  exit: {
+    duration: EXIT_MS,
+    easing: EASE_IN,
+    keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  },
   enter: {
-    duration: 260,
+    duration: ENTER_MS,
+    delay: EXIT_MS,
     easing: EASE_OUT,
     keyframes: [
-      { opacity: 0, transform: 'translateY(6px)' },
+      { opacity: 0, transform: 'translateY(10px)' },
       { opacity: 1, transform: 'translateY(0)' },
     ],
-  },
-};
-
-/** SETTLE — cover page: rise + a hair of blur on enter only. */
-const settle: SlideTransition = {
-  duration: 280,
-  exit: { duration: 280, easing: EASE_IN, keyframes: HOLD },
-  enter: {
-    duration: 280,
-    easing: EASE_OUT,
-    keyframes: [
-      { opacity: 0, transform: 'translateY(12px)', filter: 'blur(4px)' },
-      { opacity: 1, transform: 'translateY(0)', filter: 'blur(0)' },
-    ],
-  },
-};
-
-/** DISSOLVE — pure opacity, reserved for the closing page. */
-const dissolve: SlideTransition = {
-  duration: 240,
-  exit: { duration: 240, easing: EASE_IN, keyframes: HOLD },
-  enter: {
-    duration: 240,
-    easing: EASE_OUT,
-    keyframes: [{ opacity: 0 }, { opacity: 1 }],
   },
 };
 
@@ -143,7 +123,9 @@ const baseCanvasStyle: CSSProperties = {
   padding: '60px 110px',
 };
 
-// Background Decorative Overlay
+// Background Decorative Overlay — rendered inline (CSS + SVG elements) so it
+// paints synchronously with the page instead of popping in after an image decode.
+const BG_STROKE = '#16a34a';
 const BackgroundGraphic = ({ variant = 'network' }: { variant?: 'network' | 'constellation' }) => (
   <div
     style={{
@@ -151,13 +133,75 @@ const BackgroundGraphic = ({ variant = 'network' }: { variant?: 'network' | 'con
       inset: 0,
       pointerEvents: 'none',
       zIndex: 0,
-      opacity: 0.85,
-      backgroundImage: `url(${variant === 'network' ? bgNetwork : bgConstellation})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
+      backgroundImage:
+        'radial-gradient(rgba(21, 128, 61, 0.16) 1.6px, transparent 1.8px), radial-gradient(900px circle at 100% 0%, rgba(187, 240, 204, 0.38), transparent 62%), radial-gradient(800px circle at 0% 100%, rgba(187, 240, 204, 0.32), transparent 60%)',
+      backgroundSize: '48px 48px, 100% 100%, 100% 100%',
+      backgroundPosition: '24px 24px, 0 0, 0 0',
+      backgroundRepeat: 'repeat, no-repeat, no-repeat',
     }}
-  />
+  >
+    <svg
+      viewBox="0 0 1920 1080"
+      width="1920"
+      height="1080"
+      fill="none"
+      preserveAspectRatio="xMidYMid slice"
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+    >
+      {variant === 'network' ? (
+        <>
+          <g stroke={BG_STROKE} strokeOpacity={0.26} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M1400 0 V140 L1520 260 H1820" />
+            <path d="M1500 0 V90 L1620 210 H1920" />
+            <path d="M1680 0 V180 L1760 260 V420 L1880 540 H1920" />
+            <path d="M1320 0 V80 L1440 200 H1600 L1680 280 V480" />
+          </g>
+          <g fill={BG_STROKE} fillOpacity={0.4}>
+            <circle cx="1820" cy="260" r="6" />
+            <circle cx="1620" cy="210" r="6" />
+            <circle cx="1880" cy="540" r="6" />
+            <circle cx="1680" cy="480" r="6" />
+            <circle cx="1600" cy="200" r="6" />
+          </g>
+          <g stroke={BG_STROKE} strokeOpacity={0.16} strokeWidth={2}>
+            <circle cx="0" cy="1080" r="220" />
+            <circle cx="0" cy="1080" r="340" />
+            <circle cx="0" cy="1080" r="460" />
+            <circle cx="0" cy="1080" r="580" />
+          </g>
+        </>
+      ) : (
+        <>
+          <g stroke={BG_STROKE} strokeOpacity={0.22} strokeWidth={2} strokeLinecap="round">
+            <path d="M120 160 L300 260 L220 420" />
+            <path d="M300 260 L420 120 L120 160" />
+            <path d="M1500 860 L1680 940 L1800 800 L1500 860" />
+            <path d="M1680 940 L1620 1040" />
+            <path d="M420 120 L560 60" />
+            <path d="M1800 800 L1900 700" />
+          </g>
+          <g fill={BG_STROKE} fillOpacity={0.4}>
+            <circle cx="120" cy="160" r="7" />
+            <circle cx="300" cy="260" r="9" />
+            <circle cx="220" cy="420" r="6" />
+            <circle cx="420" cy="120" r="7" />
+            <circle cx="560" cy="60" r="5" />
+            <circle cx="1500" cy="860" r="7" />
+            <circle cx="1680" cy="940" r="9" />
+            <circle cx="1800" cy="800" r="7" />
+            <circle cx="1620" cy="1040" r="6" />
+            <circle cx="1900" cy="700" r="5" />
+          </g>
+          <g stroke={BG_STROKE} strokeOpacity={0.16} strokeWidth={2}>
+            <circle cx="1920" cy="0" r="240" />
+            <circle cx="1920" cy="0" r="360" />
+            <circle cx="1920" cy="0" r="480" />
+            <circle cx="1920" cy="0" r="600" />
+          </g>
+        </>
+      )}
+    </svg>
+  </div>
 );
 
 // Standard Slide Header
@@ -556,6 +600,96 @@ const FeatureCard = ({
         {tag}
       </div>
     )}
+  </div>
+);
+
+// ==========================================
+// SLIDE 0: IDENTITAS KELOMPOK
+// ==========================================
+const MemberRow = ({ no, name, nim }: { no: string; name: string; nim: string }) => (
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 28,
+      backgroundColor: colors.cardSurfaceGlass,
+      border: `1.5px solid ${colors.pastelGreenBorder}`,
+      borderRadius: 18,
+      padding: '18px 32px',
+      boxShadow: colors.cardShadow,
+      boxSizing: 'border-box',
+    }}
+  >
+    <div
+      style={{
+        width: 56,
+        height: 56,
+        borderRadius: '50%',
+        backgroundColor: colors.bgMintSoft,
+        border: `1.5px solid ${colors.pastelGreenBorderStrong}`,
+        color: colors.emeraldDark,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: '"JetBrains Mono", monospace',
+        fontSize: 26,
+        fontWeight: 800,
+        flexShrink: 0,
+      }}
+    >
+      {no}
+    </div>
+    <div
+      style={{
+        flex: 1,
+        fontSize: 36,
+        fontWeight: 700,
+        color: colors.inkPrimary,
+        lineHeight: 1.3,
+        letterSpacing: '-0.01em',
+      }}
+    >
+      {name}
+    </div>
+    <div
+      style={{
+        fontFamily: '"JetBrains Mono", monospace',
+        fontSize: 28,
+        fontWeight: 700,
+        color: colors.emeraldPrimary,
+        backgroundColor: colors.bgMintSoft,
+        border: `1px solid ${colors.pastelGreenBorder}`,
+        borderRadius: 14,
+        padding: '8px 20px',
+        letterSpacing: '0.04em',
+      }}
+    >
+      {nim}
+    </div>
+  </div>
+);
+
+const Slide00Kelompok: Page = () => (
+  <div style={baseCanvasStyle}>
+    <BackgroundGraphic variant="constellation" />
+    <SlideHeader category="Anggota Presentasi" title="KELOMPOK 3" />
+    <div
+      style={{
+        zIndex: 1,
+        width: 1100,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 18,
+        marginBottom: 40,
+      }}
+    >
+      <MemberRow no="1" name="DIMAS" nim="50426246" />
+      <MemberRow no="2" name="FATIH AHMAD. A" nim="50426337" />
+      <MemberRow no="3" name="KHAIRA RAFLINA.P" nim="59426469" />
+      <MemberRow no="4" name="M.RIZKY JUMMALULLAIL" nim="50426494" />
+      <MemberRow no="5" name="RIZKI ARAFI.Z" nim="50426848" />
+    </div>
+    <SlideFooter chapter="Identitas Kelompok" />
   </div>
 );
 
@@ -2703,10 +2837,6 @@ const Slide15Kesimpulan: Page = () => (
   </div>
 );
 
-// Per-page transition overrides: the cover materializes with SETTLE and the
-// closing page fades out/in with DISSOLVE; slides 2–14 inherit RISE.
-(Slide01Cover as { transition?: SlideTransition }).transition = settle;
-(Slide15Kesimpulan as { transition?: SlideTransition }).transition = dissolve;
 
 // Metadata OpenSlide
 export const meta: SlideMeta = {
@@ -2716,6 +2846,11 @@ export const meta: SlideMeta = {
 
 // Complete Speaker Notes Index-Aligned for the 15 Slides
 export const notes: (string | undefined)[] = [
+  // Slide 0: Identitas Kelompok
+  `Assalamualaikum dan selamat pagi/siang. Kami dari Kelompok 3.
+Perkenalkan anggota kelompok kami: Dimas, Fatih Ahmad A., Khaira Raflina P., M. Rizky Jummalullail, dan Rizki Arafi Z.
+Selanjutnya kami akan mempresentasikan topik penerapan teknologi komputer dalam bidang komunikasi.`,
+
   // Slide 1
   `Selamat datang di presentasi mengenai 'Penerapan Teknologi Komputer dalam Bidang Komunikasi'.
 Pada sesi ini kita akan mengulas bagaimana komputasi telah mengubah cara umat manusia berinteraksi, berkolaborasi, dan bertukar informasi.
@@ -2800,6 +2935,7 @@ Teknologi hanyalah alat (tools). Etika, literasi, dan kebijaksanaan manusialah y
 
 // Default Export 15 Pages
 export default [
+  Slide00Kelompok,
   Slide01Cover,
   Slide02MengapaBerubah,
   Slide03KonsepDasar,
