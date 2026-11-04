@@ -1,5 +1,5 @@
-import type { DesignSystem, Page, SlideMeta } from '@open-slide/core';
-import { useSlidePageNumber } from '@open-slide/core';
+import type { DesignSystem, Page, SlideMeta, SlideTransition } from '@open-slide/core';
+import { Step, Steps, useSlidePageNumber } from '@open-slide/core';
 import type { CSSProperties, ReactNode } from 'react';
 
 export const design: DesignSystem = {
@@ -363,6 +363,7 @@ const Card = ({
       ...cardBase,
       borderTop: `6px solid ${color}`,
       padding: '30px 36px 34px',
+      height: '100%',
       display: 'flex',
       flexDirection: 'column',
     }}
@@ -523,7 +524,7 @@ const StatCard = ({
 const coverBg = `radial-gradient(circle at 78% 36%, rgba(59,130,246,0.38) 0%, rgba(59,130,246,0.1) 28%, transparent 55%), ${gridBg('#0a1630', 'rgba(96,165,250,0.1)', 72)}`;
 
 const MetaRow = ({ label, children }: { label: string; children: ReactNode }) => (
-  <div style={{ display: 'grid', gridTemplateColumns: '230px 1fr', gap: 24, alignItems: 'baseline' }}>
+  <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr', gap: 30, alignItems: 'baseline' }}>
     <span
       style={{ fontFamily: mono, fontSize: 22, fontWeight: 700, letterSpacing: '0.14em', color: '#60a5fa' }}
     >
@@ -596,9 +597,10 @@ const Cover: Page = () => (
         }}
       >
         <MetaRow label="INSTANSI">Universitas Gunadarma</MetaRow>
-        <MetaRow label="PENULIS JURNAL">
-          Achmad Maulana, Allyssa Putri, Muhamad Alif Farras Syakir, Revan Sabilillah Saputra, dan Maulina
-          Diah Lestari
+        <MetaRow label="ANGGOTA KELOMPOK">
+          Bryan Adams Tambunan (50426185), Rizki Arafi Zaidan (50426848), 
+          Sharman Radhitya Bilal (50426900)
+
         </MetaRow>
         <MetaRow label="PUBLIKASI">
           Jupiter: Publikasi Ilmu Keteknikan Industri, Teknik Elektro dan Informatika (Vol. 3, No. 4, 2025)
@@ -621,7 +623,7 @@ const StepBox = ({
   color: string;
   children: ReactNode;
 }) => (
-  <div style={{ ...cardBase, padding: '26px 24px 28px', borderTop: `6px solid ${color}` }}>
+  <div style={{ ...cardBase, padding: '26px 24px 28px', borderTop: `6px solid ${color}`, height: '100%' }}>
     <div style={{ fontFamily: mono, fontSize: 24, fontWeight: 700, color }}>{n}</div>
     <div style={{ fontSize: 34, fontWeight: 800, lineHeight: 1.2, marginTop: 4 }}>{title}</div>
     <div style={{ fontSize: 'var(--osd-size-body)', lineHeight: 1.4, marginTop: 12, color: muted }}>
@@ -642,36 +644,52 @@ const Background: Page = () => (
         efisiensi tahapan eksekusi instruksi:
       </Lead>
       <Grid cols="repeat(5, 1fr)" gap={20}>
-        <StepBox n="01" title="Fetch" color="#10b981">
-          Ambil instruksi dari memori utama.
-        </StepBox>
-        <StepBox n="02" title="Decode" color="#10b981">
-          Uraikan kode operasi (opcode).
-        </StepBox>
-        <StepBox n="03" title="Execute" color="#10b981">
-          Operasi aritmatika dan logika oleh ALU.
-        </StepBox>
-        <StepBox n="04" title="Memory Access" color="#10b981">
-          Akses operand di memori bila perlu.
-        </StepBox>
-        <StepBox n="05" title="Write-Back" color="#10b981">
-          Tulis hasil ke register internal.
-        </StepBox>
+        <Steps>
+          <Step>
+            <StepBox n="01" title="Fetch" color="#10b981">
+              Ambil instruksi dari memori utama.
+            </StepBox>
+          </Step>
+          <Step>
+            <StepBox n="02" title="Decode" color="#10b981">
+              Uraikan kode operasi (opcode).
+            </StepBox>
+          </Step>
+          <Step>
+            <StepBox n="03" title="Execute" color="#10b981">
+              Operasi aritmatika dan logika oleh ALU.
+            </StepBox>
+          </Step>
+          <Step>
+            <StepBox n="04" title="Memory Access" color="#10b981">
+              Akses operand di memori bila perlu.
+            </StepBox>
+          </Step>
+          <Step>
+            <StepBox n="05" title="Write-Back" color="#10b981">
+              Tulis hasil ke register internal.
+            </StepBox>
+          </Step>
+        </Steps>
       </Grid>
-      <div
-        style={{
-          marginTop: 36,
-          padding: '22px 32px',
-          borderLeft: '8px solid #10b981',
-          background: 'rgba(16,185,129,0.1)',
-          borderRadius: 12,
-          fontSize: 'var(--osd-size-body)',
-          lineHeight: 1.5,
-        }}
-      >
-        Optimalisasi siklus ini sangat dipengaruhi mikroarsitektur: <strong>hierarki memori cache</strong>,{' '}
-        <strong>pipelining</strong>, dan <strong>branch prediction</strong>.
-      </div>
+      <Steps>
+        <Step>
+          <div
+            style={{
+              marginTop: 36,
+              padding: '22px 32px',
+              borderLeft: '8px solid #10b981',
+              background: 'rgba(16,185,129,0.1)',
+              borderRadius: 12,
+              fontSize: 'var(--osd-size-body)',
+              lineHeight: 1.5,
+            }}
+          >
+            Optimalisasi siklus ini sangat dipengaruhi mikroarsitektur: <strong>hierarki memori cache</strong>,{' '}
+            <strong>pipelining</strong>, dan <strong>branch prediction</strong>.
+          </div>
+        </Step>
+      </Steps>
     </Body>
   </Canvas>
 );
@@ -683,30 +701,36 @@ const Problem: Page = () => (
     <Header eyebrow="Problem Statement" title="Dilema Filosofi RISC vs CISC" color="#f59e0b" icon={icons.scale} />
     <Body>
       <Grid cols="1fr 1fr">
-        <Card color={risc} tag="RISC" title="Paradigma RISC" sub="Reduced Instruction Set Computer">
-          <Field label="Prinsip utama" color={risc}>
-            Himpunan instruksi sederhana berukuran seragam.
-          </Field>
-          <Field label="Fokus" color={risc}>
-            Eksekusi single-cycle, arsitektur load/store, serta optimalisasi pipelining dan paralelisme
-            hardware.
-          </Field>
-          <Field label="Tujuan" color={risc}>
-            Kecepatan eksekusi tinggi dan konsumsi energi minimal.
-          </Field>
-        </Card>
-        <Card color={cisc} tag="CISC" title="Paradigma CISC" sub="Complex Instruction Set Computer">
-          <Field label="Prinsip utama" color={cisc}>
-            Instruksi kompleks multi-siklus langsung di tingkat hardware.
-          </Field>
-          <Field label="Fokus" color={cisc}>
-            Meminimalkan beban kompilasi dan ukuran kode biner (code footprint) dengan operasi memori
-            langsung.
-          </Field>
-          <Field label="Tujuan" color={cisc}>
-            Efisiensi kapasitas memori dan kemudahan pemrograman assembly.
-          </Field>
-        </Card>
+        <Steps>
+          <Step>
+            <Card color={risc} tag="RISC" title="Paradigma RISC" sub="Reduced Instruction Set Computer">
+              <Field label="Prinsip utama" color={risc}>
+                Himpunan instruksi sederhana berukuran seragam.
+              </Field>
+              <Field label="Fokus" color={risc}>
+                Eksekusi single-cycle, arsitektur load/store, serta optimalisasi pipelining dan paralelisme
+                hardware.
+              </Field>
+              <Field label="Tujuan" color={risc}>
+                Kecepatan eksekusi tinggi dan konsumsi energi minimal.
+              </Field>
+            </Card>
+          </Step>
+          <Step>
+            <Card color={cisc} tag="CISC" title="Paradigma CISC" sub="Complex Instruction Set Computer">
+              <Field label="Prinsip utama" color={cisc}>
+                Instruksi kompleks multi-siklus langsung di tingkat hardware.
+              </Field>
+              <Field label="Fokus" color={cisc}>
+                Meminimalkan beban kompilasi dan ukuran kode biner (code footprint) dengan operasi memori
+                langsung.
+              </Field>
+              <Field label="Tujuan" color={cisc}>
+                Efisiensi kapasitas memori dan kemudahan pemrograman assembly.
+              </Field>
+            </Card>
+          </Step>
+        </Steps>
       </Grid>
     </Body>
   </Canvas>
@@ -1024,14 +1048,23 @@ const FlowCard = ({
   n,
   title,
   color,
+  arrow,
   children,
 }: {
   n: string;
   title: string;
   color: string;
+  arrow?: boolean;
   children: ReactNode;
 }) => (
-  <div style={{ ...cardBase, padding: '32px 36px 36px' }}>
+  <div style={{ ...cardBase, padding: '32px 36px 36px', position: 'relative', height: '100%' }}>
+    {arrow ? (
+      <div style={{ position: 'absolute', top: 52, left: -48, width: 40, height: 40 }}>
+        <Ico color={color} size={40}>
+          {icons.chevron}
+        </Ico>
+      </div>
+    ) : null}
     <div
       style={{
         width: 64,
@@ -1056,13 +1089,6 @@ const FlowCard = ({
   </div>
 );
 
-const FlowArrow = ({ color }: { color: string }) => (
-  <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 48 }}>
-    <Ico color={color} size={40}>
-      {icons.chevron}
-    </Ico>
-  </div>
-);
 
 const Methodology: Page = () => (
   <Canvas
@@ -1071,19 +1097,25 @@ const Methodology: Page = () => (
     <Header eyebrow="Metodologi" title="Metodologi Penelitian Komparatif" color="#0284c7" icon={icons.doc} />
     <Body>
       <Lead>Pendekatan kualitatif komparatif berbasis peninjauan literatur analitis:</Lead>
-      <Grid cols="1fr 56px 1fr 56px 1fr" gap={0}>
-        <FlowCard n="1" title="Studi Literatur Sistematis" color="#0284c7">
-          Dokumentasi teknis produsen prosesor (ARM, Intel, AMD, SiFive) dan buku teks Hennessy &amp;
-          Patterson.
-        </FlowCard>
-        <FlowArrow color="#0284c7" />
-        <FlowCard n="2" title="Analisis Komparatif Variabel" color="#0284c7">
-          Membandingkan set instruksi, kecepatan eksekusi, daya, kompleksitas silikon, dan memori.
-        </FlowCard>
-        <FlowArrow color="#0284c7" />
-        <FlowCard n="3" title="Evaluasi Performa Konseptual" color="#0284c7">
-          Menilai keunggulan pada komputasi general-purpose, sistem embedded, dan edge AI.
-        </FlowCard>
+      <Grid cols="1fr 1fr 1fr" gap={56}>
+        <Steps>
+          <Step>
+            <FlowCard n="1" title="Studi Literatur Sistematis" color="#0284c7">
+              Dokumentasi teknis produsen prosesor (ARM, Intel, AMD, SiFive) dan buku teks Hennessy &amp;
+              Patterson.
+            </FlowCard>
+          </Step>
+          <Step>
+            <FlowCard n="2" title="Analisis Komparatif Variabel" color="#0284c7" arrow>
+              Membandingkan set instruksi, kecepatan eksekusi, daya, kompleksitas silikon, dan memori.
+            </FlowCard>
+          </Step>
+          <Step>
+            <FlowCard n="3" title="Evaluasi Performa Konseptual" color="#0284c7" arrow>
+              Menilai keunggulan pada komputasi general-purpose, sistem embedded, dan edge AI.
+            </FlowCard>
+          </Step>
+        </Steps>
       </Grid>
     </Body>
   </Canvas>
@@ -1631,18 +1663,26 @@ const Conclusions: Page = () => (
     <Header eyebrow="Penutup" title="Kesimpulan Utama Penelitian" color="#059669" icon={icons.thumb} />
     <Body>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-        <Conclusion n="1" title="Dominasi Efisiensi RISC" color={risc}>
-          RISC unggul dalam efisiensi energi (1–2 W), kesederhanaan hardware, dan kecepatan instruksi dasar
-          1 siklus — standar utama mobile dan IoT.
-        </Conclusion>
-        <Conclusion n="2" title="Kepadatan Kode CISC" color={cisc}>
-          CISC unggul dalam kepadatan kode biner dan komputasi kompleks mandiri, tetap dominan di server dan
-          desktop performa tinggi.
-        </Conclusion>
-        <Conclusion n="3" title="Era Konvergensi Hibrida" color="#2563eb">
-          RISC dan CISC tidak lagi dipisahkan kaku, melainkan bermigrasi ke hibridisasi mikro-operasi
-          internal demi efisiensi daya-per-watt yang optimal.
-        </Conclusion>
+        <Steps>
+          <Step>
+            <Conclusion n="1" title="Dominasi Efisiensi RISC" color={risc}>
+              RISC unggul dalam efisiensi energi (1–2 W), kesederhanaan hardware, dan kecepatan instruksi
+              dasar 1 siklus — standar utama mobile dan IoT.
+            </Conclusion>
+          </Step>
+          <Step>
+            <Conclusion n="2" title="Kepadatan Kode CISC" color={cisc}>
+              CISC unggul dalam kepadatan kode biner dan komputasi kompleks mandiri, tetap dominan di server
+              dan desktop performa tinggi.
+            </Conclusion>
+          </Step>
+          <Step>
+            <Conclusion n="3" title="Era Konvergensi Hibrida" color="#2563eb">
+              RISC dan CISC tidak lagi dipisahkan kaku, melainkan bermigrasi ke hibridisasi mikro-operasi
+              internal demi efisiensi daya-per-watt yang optimal.
+            </Conclusion>
+          </Step>
+        </Steps>
       </div>
     </Body>
   </Canvas>
@@ -1685,6 +1725,40 @@ const Recommendations: Page = () => (
     </Body>
   </Canvas>
 );
+
+/* ---------- Transitions: one DNA (hold outgoing, fade-in incoming) ---------- */
+
+const EASE_OUT = 'cubic-bezier(0, 0, 0.2, 1)';
+const EASE_IN = 'cubic-bezier(0.4, 0, 1, 1)';
+const HOLD: Keyframe[] = [{ opacity: 1 }, { opacity: 1 }];
+
+// RISE: house transition for every page.
+export const transition: SlideTransition = {
+  duration: 260,
+  exit: { duration: 260, easing: EASE_IN, keyframes: HOLD },
+  enter: {
+    duration: 260,
+    easing: EASE_OUT,
+    keyframes: [
+      { opacity: 0, transform: 'translateY(6px)' },
+      { opacity: 1, transform: 'translateY(0)' },
+    ],
+  },
+};
+
+// SETTLE: slightly softer entrance for the cover only.
+Cover.transition = {
+  duration: 280,
+  exit: { duration: 280, easing: EASE_IN, keyframes: HOLD },
+  enter: {
+    duration: 280,
+    easing: EASE_OUT,
+    keyframes: [
+      { opacity: 0, transform: 'translateY(12px)', filter: 'blur(4px)' },
+      { opacity: 1, transform: 'translateY(0)', filter: 'blur(0)' },
+    ],
+  },
+};
 
 export const meta: SlideMeta = {
   title: 'RISC vs CISC: Studi Kinerja dan Efisiensi',
